@@ -93,27 +93,29 @@
     }
     journalBtn();
 
-    // 横スクロール
-    const sideScroll = function () {
-        const area = document.querySelector("#crew");
-        const items = document.querySelectorAll(".crew-box");
-        const cr = items[0].getBoundingClientRect();
-        const num = items.length;
-        const screenWidth = window.innerWidth;
-
-        const boxesWidth = (cr.width * num) + ((num - 1) * 5);
-        const move = -(boxesWidth - screenWidth);
-
-        gsap.to(items, {
-            x: move,
-            ease: "none",
-            scrollTrigger: {
-                trigger: area,
-                start: "top 10%",
-                pin: true,
-                scrub: true,
-            }
-        });
+    // スライドショー（splide.js)
+    {
+        const target = '.splide';
+        const options = {
+            type: 'loop',
+            pagination: false,
+            mediaQuery: 'max',
+            perMove: 1,
+            pauseOnHover: false,
+            fixedWidth: '380px',
+            gap: 16,
+            updateOnMove: true,
+            breakpoints: {
+                630: {
+                    fixedWidth: '320px',
+                    gap: 16,
+                    autoplay: 'pause',
+                }
+            },
+        }
+        const mySplide = new Splide(target, options).mount(window.splide.Extensions);
     }
-    sideScroll();
+
+
+
 }
