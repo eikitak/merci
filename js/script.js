@@ -61,6 +61,36 @@
     // }
     // bgMove();
 
+    // ショップエフェクト
+    // const shopEffect = function () {
+    //     gsap.utils.toArray('.shop-box4').forEach(el => {
+    //         console.log(el);
+    //         gsap.timeline({
+    //             duration: .3, scrollTrigger: {
+    //                 markers: true,
+    //                 trigger: el,
+    //                 start: "top 100%",
+    //                 toggleActions: 'play none none reset'
+    //             }
+    //         })
+    //             .from('.shop-box4 ', {
+    //                 xPercent: '-100%',
+    //                 //     scrollTrigger: {
+    //                 //         markers: true,
+    //                 //     trigger: '.shop-box4',
+    //                 //     start: "top 100%", 
+    //                 //     toggleActions: 'play none none reset'
+    //                 // }
+    //             })
+    //             .from('.shop-box4 img', {
+    //                 xPercent: -100,
+    //                 delay: .3
+    //             })
+    //         console.log('hello');
+    //     })
+    // };
+    // shopEffect();
+
     // 伸びるボーダー
     const border = function () {
         const bd = document.querySelectorAll('.journal-box');
@@ -116,6 +146,30 @@
         const mySplide = new Splide(target, options).mount(window.splide.Extensions);
     }
 
+    const slideIn = function () {
+        const sli = document.querySelectorAll('.slideBase');
+        const sld = document.querySelectorAll('.slideIn');
+        gsap.timeline({
+            delay: .1,
+            scrollTrigger: {
+                trigger: '.shop-box4',
+                // markers: true,
+                toggleActions: 'play none none reset'
+            }
+        })
+            .from(sli, {
+                stagger: .1,
+                xPercent: 100,
+                duration: .8,
+            })
+            .from(sld, {
+                stagger: .1,
+                xPercent: 100,
+                duration: .5,
+                delay: .3
+            }, '<');
+    };
+    slideIn();
 
 
 }
